@@ -25,6 +25,7 @@ import org.jacoco.core.analysis.ICoverageNode.CounterEntity;
 import org.jacoco.report.internal.ReportOutputFolder;
 import org.jacoco.report.internal.html.HTMLElement;
 import org.jacoco.report.internal.html.resources.Resources;
+import org.jacoco.report.internal.html.resources.Styles;
 
 /**
  * Column that prints the coverage percentage for each item and the total
@@ -53,6 +54,10 @@ public class PercentageColumn implements IColumnRenderer {
 		this.percentageFormat = DecimalFormat.getPercentInstance(locale);
 		comparator = new TableItemComparator(
 				CounterComparator.MISSEDRATIO.on(entity));
+	}
+
+	public String getStyle(final boolean border) {
+		return border ? Styles.CELL_R_BORDER : Styles.CELL_R;
 	}
 
 	public boolean init(final List<? extends ITableItem> items,
